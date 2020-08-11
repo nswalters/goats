@@ -12,7 +12,9 @@ class GoatCorral extends React.Component {
     return (
       <div>
         <h3>GET YOUR GOAT</h3>
-        { goatCards }
+        <div className="d-flex flex-wrap container">
+          { goatCards }
+        </div>
       </div>
     );
   }
