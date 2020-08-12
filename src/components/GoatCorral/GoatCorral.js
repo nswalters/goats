@@ -1,20 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Goat from '../Goat/Goat';
 
+import goatShape from '../../helpers/propz/goatShape';
+
 class GoatCorral extends React.Component {
+  static propTypes = {
+    goats: PropTypes.arrayOf(goatShape.goatShape),
+    takeAGoat: PropTypes.func,
+    freeGoat: PropTypes.func,
+  }
+
   render() {
-    const { goats } = this.props;
+    const { goats, takeAGoat, freeAGoat } = this.props;
 
     const goatCards = goats.map((goat) => (
-      <Goat key={goat.id} goat={goat} />
+      <Goat key={goat.id} goat={goat} takeAGoat={takeAGoat} freeAGoat={freeAGoat}/>
     ));
 
     return (
       <div>
-        <h3>GET YOUR GOAT</h3>
-        <div className="d-flex flex-wrap container">
-          { goatCards }
-        </div>
+        <h2>GET YOUR GOAT</h2>
+          <div className="card-columns">
+            {goatCards}
+          </div>
       </div>
     );
   }
